@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/FreeLeh/GoFreeDB v1.0.1
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
+	github.com/lithammer/fuzzysearch v1.1.5
 )
 
 require (
@@ -14,7 +15,6 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.1.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.5.1 // indirect
-	github.com/lithammer/fuzzysearch v1.1.5 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	go.opencensus.io v0.23.0 // indirect
