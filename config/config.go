@@ -22,8 +22,6 @@ type FreeDBConfig struct {
 
 type SheetNames struct {
 	Mcc             string `json:"mcc"`
-	Merchant        string `json:"merchant"`
-	Channel         string `json:"channel"`
 	MerchantChannel string `json:"merchantChannel"`
 }
 

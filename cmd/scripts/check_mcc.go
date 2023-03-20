@@ -5,10 +5,6 @@ import (
 	"github.com/vemoxy/cc-helper/model"
 )
 
-func CheckMcc(merchantName string) []handler.CheckMccResult {
+func CheckMcc(merchantName string) []model.MerchantChannel {
 	return handler.CheckMcc(merchantName)
-}
-
-func CheckMccV3(merchantName string) []model.MerchantChannel {
-	return handler.CheckMccV3(merchantName)
 }

@@ -48,9 +48,7 @@ func main() {
 				replyMessageText = "Please input a shop name."
 				break
 			}
-			// results := handler.CheckMcc(update.Message.CommandArguments())
-			// replyMessageText = handler.GenerateMccResultMessage(results)
-			results := handler.CheckMccV3(update.Message.CommandArguments())
+			results := handler.CheckMcc(update.Message.CommandArguments())
 			replyMessageText = handler.GenerateMccV3ResultMessage(results)
 		default:
 			replyMessageText = "Please use an existing command."
