@@ -41,7 +41,7 @@ func main() {
 			continue
 		}
 
-		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
+		log.Printf("[%d:%s] %s", update.Message.From.ID, update.Message.From.UserName, update.Message.Text)
 
 		var replyMessageText string
 
