@@ -17,7 +17,13 @@ var cachedMerchantChannels []model.MerchantChannel
 var cacheLastUpdated time.Time = time.Unix(0, 0)
 var refreshInterval time.Duration = 120 * time.Second
 
-func reloadCache() {
+func ReloadCache() {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Printf("Crashed, err: %v", r)
+		}
+	}()
+
 	conf, err := config.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
@@ -58,9 +64,9 @@ func getMerchantChannels() []model.MerchantChannel {
 	// 	}
 	// }()
 
-	if time.Since(cacheLastUpdated) >= refreshInterval {
-		reloadCache()
-	}
+	// if time.Since(cacheLastUpdated) >= refreshInterval {
+	// 	ReloadCache()
+	// }
 	return cachedMerchantChannels
 }
 

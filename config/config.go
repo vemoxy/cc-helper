@@ -13,6 +13,7 @@ type Config struct {
 
 type TelegramConfig struct {
 	ApiKey string `json:"api_key"`
+	Debug  bool   `json:"debug"`
 }
 
 type FreeDBConfig struct {

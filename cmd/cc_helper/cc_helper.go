@@ -2,25 +2,29 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/vemoxy/cc-helper/config"
+	"github.com/vemoxy/cc-helper/data"
 	"github.com/vemoxy/cc-helper/handler"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 func main() {
-	config, err := config.LoadConfig()
+	conf, err := config.LoadConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	bot, err := tgbotapi.NewBotAPI(config.Telegram.ApiKey)
+	go autoReloadCache()
+
+	bot, err := tgbotapi.NewBotAPI(conf.Telegram.ApiKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	bot.Debug = true
+	bot.Debug = conf.Telegram.Debug
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
@@ -58,5 +62,12 @@ func main() {
 		msg.ParseMode = tgbotapi.ModeMarkdown
 		msg.ReplyToMessageID = update.Message.MessageID
 		bot.Send(msg)
+	}
+}
+
+func autoReloadCache() {
+	for {
+		data.ReloadCache()
+		time.Sleep(time.Minute)
 	}
 }
